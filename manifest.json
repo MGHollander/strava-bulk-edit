@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Strava Bulk Edit",
+  "description": "A Chrome extension to edit multiple Strava activities at once.",
+  "author": "Marc Hollander <marchollander@gmail.com>",
+  "homepage_url": "https://github.com/MGHollander/strava-bulk-edit",
+  "version": "0.1.0",
+  "icons": {
+    "64": "images/Strava-logo-64.png"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/Strava-logo-64.png"
+  }
+}

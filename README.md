@@ -1,3 +1,3 @@
 # Strava Bulk Edit
 
-A plugin to edit multiple Strava activities at once.
+A Chrome extension to edit multiple Strava activities at once.

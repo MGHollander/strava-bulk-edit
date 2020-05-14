@@ -12,6 +12,9 @@
     "scripts": ["background.js"],
     "persistent": false
   },
+  "permissions": [
+    "declarativeContent"
+  ],
   "page_action": {
     "default_popup": "popup.html",
     "default_icon": "images/Strava-logo-64.png"

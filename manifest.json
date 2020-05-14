@@ -13,6 +13,7 @@
     "persistent": false
   },
   "permissions": [
+    "activeTab",
     "declarativeContent"
   ],
   "page_action": {

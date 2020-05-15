@@ -12,6 +12,12 @@
     "scripts": ["background.js"],
     "persistent": false
   },
+  "content_scripts": [
+    {
+      "matches": ["https://www.strava.com/athlete/training"],
+      "js": ["updateActivities.js"]
+    }
+  ],
   "permissions": [
     "activeTab",
     "declarativeContent"

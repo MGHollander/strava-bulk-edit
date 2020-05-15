@@ -36,12 +36,30 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
       popupButtonParagraph.appendChild(popupButtonLabel);
 
       const popupButton = document.createElement('button');
+      popupButton.setAttribute('type', 'button');
       popupButton.setAttribute('id', 'popupButton');
       popupButton.innerHTML = 'Save all';
 
       popupButtonParagraph.appendChild(popupButton);
 
       popupForm.appendChild(popupButtonParagraph);
+
+      popupButton.onclick = function(element) {
+        const fields = {};
+
+        if (visibility.value) {
+          fields.visibility = visibility.value;
+        }
+
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+          chrome.tabs.executeScript(tabs[0].id, {
+            code: 'updateActivities(' + JSON.stringify(fields) + ');'
+            }, function () {
+              window.close();
+            }
+          );
+        });
+      };
     }
   }
 });

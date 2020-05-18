@@ -1,6 +1,7 @@
 'use strict';
 
 const popupForm = document.getElementById('popupForm');
+const loadingMsg = document.getElementById('loadingMsg');
 
 chrome.runtime.onMessage.addListener(function(request, sender) {
   if (request.action === 'getSource') {
@@ -13,7 +14,7 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
     const activityTitle = activities + ' ' + (activities === 1 ? 'activity' : 'activities');
 
     popupTitle.innerHTML = activityTitle + ' to edit';
-    popupForm.appendChild(popupTitle);
+    popupForm.replaceChild(popupTitle, loadingMsg);
 
     const visibility = source.getElementById('visibility');
     if (visibility) {

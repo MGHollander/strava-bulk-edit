@@ -2,6 +2,8 @@
 
 A Chrome extension to edit multiple Strava activities at once.
 
+![screenshot](screenshot-chrome.png)
+
 ## Usage
 
 Visit the [My Acrivities page on Strava.com](https://www.strava.com/athlete/training).

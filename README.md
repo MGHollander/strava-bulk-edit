@@ -2,7 +2,7 @@
 
 A Chrome extension to edit multiple Strava activities at once.
 
-![screenshot](src/images/screenshot.png)
+![screenshot](images/screenshot.png)
 
 ## Usage
 

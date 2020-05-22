@@ -19,7 +19,7 @@ There are a few enhancements I like te make in the future. These are added as
 ## Feedback
 
 Please feel free to give feedback, share ideas or report bugs. Email me
-at [marchollander@gmail.com](mailto:marchollander@gmail.com) or [add an issue to
+at [marc@mghollander.nl](mailto:marc@mghollander.nl) or [add an issue to
 the repository](https://github.com/MGHollander/strava-bulk-edit/issues).
 
 ## Credits

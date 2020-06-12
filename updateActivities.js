@@ -41,10 +41,29 @@ function updateActivities(fields) {
   }
 
   const nextButton = document.querySelector('button.next_page');
+  const previousButton = document.querySelector('button.previous_page');
+
   if (nextButton != null) {
     nextButton.click();
     setTimeout(updateActivities, 3000, fields);
+  } else if (previousButton != null) {
+    navigateBack();
   } else {
-    loadingOverlay.classList.add('strava-bulk-edit-loading-overlay-hidden');
+    closeLoadingOverlay();
   }
+}
+
+function navigateBack() {
+  const previousButton = document.querySelector('button.previous_page');
+
+  if (previousButton != null) {
+    previousButton.click();
+    setTimeout(navigateBack, 3000, previousButton);
+  } else {
+    closeLoadingOverlay();
+  }
+}
+
+function closeLoadingOverlay() {
+  loadingOverlay.classList.add('strava-bulk-edit-loading-overlay-hidden');
 }

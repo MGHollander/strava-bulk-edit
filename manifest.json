@@ -12,10 +12,6 @@
     "48": "images/strava-bulk-edit-logo-48.png",
     "128": "images/strava-bulk-edit-logo-128.png"
   },
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
   "content_scripts": [
     {
       "matches": ["https://www.strava.com/athlete/training"],
@@ -24,11 +20,10 @@
     }
   ],
   "permissions": [
-    "activeTab",
-    "declarativeContent"
+    "activeTab"
   ],
   "page_action": {
-    "default_popup": "popup.html",
+    "default_title": "Strava Bulk Edit",
     "default_icon": {
       "16": "images/strava-bulk-edit-logo-16.png",
       "32": "images/strava-bulk-edit-logo-32.png",

@@ -1,34 +1,31 @@
-.strava-bulk-edit-loading-overlay {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99999;
-  width: 100vw;
-  height: 100%;
-  background-color: hsla(0, 0%, 0%, 0.4);
+.modal.in {
+  display: block;
 }
 
-.strava-bulk-edit-loading-overlay-hidden {
-  display: none;
+.modal .modal-content {
+  border: none;
 }
 
-.strava-bulk-edit-loading-content {
-  background-color: #fff;
-  color: #333;
-  border-radius: 0.5em;
-  text-align: center;
-  padding: 2em;
+.modal .modal-body {
+  background-color: transparent;
 }
 
-.strava-bulk-edit-loading-content * {
+.modal-body * {
   margin: 0;
 }
-.strava-bulk-edit-loading-content * + * {
+
+.modal-body * + * {
   margin-top: 1.5em;
+}
+
+.modal-backdrop {
+  display: none;
+  opacity: 0.5;
+}
+
+.modal-open .modal-backdrop.in {
+  display: block;
+  opacity: 0.5;
 }
 
 .strava-bulk-edit-loading-animation {

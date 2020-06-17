@@ -4,6 +4,10 @@ A Chrome extension to edit multiple Strava activities at once.
 
 ![screenshot](src/images/screenshot-1280x800-google-chrome-1.png)
 
+## Official Releases
+
+- [Google Chrome Extension](https://chrome.google.com/webstore/detail/strava-bulk-edit/mkbkebdegldokaipfgficlleheeejfjg)
+
 ## Usage
 
 Visit the [My Activities page on Strava.com](https://www.strava.com/athlete/training).

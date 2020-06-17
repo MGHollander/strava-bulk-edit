@@ -16,6 +16,6 @@ else
 fi
 
 log "Create an archive to release"
-zip -r -j "build/extension-$(date +'%Y-%m-%d-%H-%M-%S').zip" src/extension
+zip -r -j "build/strava-bulk-edit-$(date +'%Y-%m-%d-%H-%M-%S').zip" src/extension
 
 log "========= End of build ========="

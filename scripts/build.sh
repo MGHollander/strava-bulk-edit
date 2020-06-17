@@ -7,11 +7,15 @@ log "--------- Build extension ---------"
 log "Go to project root"
 cd "$(cd -P -- "$(dirname -- "$0")" && pwd -P)/.." || exit 1
 
-if [ ! -d "build" ]; then
-  mkdir "build"
+if [ ! -d build ]; then
+  log "Create a build directory"
+  mkdir build
+else
+  log "Empty the build directory"
+  rm -r build/*
 fi
 
-log "Create an archive for release"
+log "Create an archive to release"
 zip -r -j build/extension.zip src/extension
 
 log "========= End of build ========="

@@ -9,13 +9,16 @@ cd "$(cd -P -- "$(dirname -- "$0")" && pwd -P)/.." || exit 1
 
 if [ ! -d build ]; then
   log "Create a build directory"
-  mkdir build
+  mkdir build || exit 1
 else
   log "Empty the build directory"
-  rm -r build/*
+  rm -r build/* || exit 1
 fi
 
+log "Go to extension dir"
+cd src/extension || exit 1
+
 log "Create an archive to release"
-zip -r -j "build/strava-bulk-edit-$(date +'%Y-%m-%d-%H-%M-%S').zip" src/extension
+zip -r "../../build/strava-bulk-edit-$(date +'%Y-%m-%d-%H-%M-%S').zip" . || exit 1
 
 log "========= End of build ========="

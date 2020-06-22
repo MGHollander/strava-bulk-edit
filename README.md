@@ -2,6 +2,10 @@
 
 A Chrome extension to edit multiple Strava activities at once.
 
+The extension adds a title to the activity filter panel, and an update panel
+below the activity panel. It will go through all filtered activities and
+update then one by one.
+
 ![screenshot](src/images/screenshot-1280x800-google-chrome-1.png)
 
 ## Official Releases
@@ -11,8 +15,6 @@ A Chrome extension to edit multiple Strava activities at once.
 ## Usage
 
 Visit the [My Activities page on Strava.com](https://www.strava.com/athlete/training).
-The extension will add an update panel below the activity filters. It will also
-add a title to the filter panel.
 
 Use the filters to select the activities you want to edit. Choose the
 privacy setting to apply to the selected activities. Click the "Update activities"

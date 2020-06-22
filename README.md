@@ -14,11 +14,10 @@ update then one by one.
 
 ## Usage
 
-Visit the [My Activities page on Strava.com](https://www.strava.com/athlete/training).
-
-Use the filters to select the activities you want to edit. Choose the
-privacy setting to apply to the selected activities. Click the "Update activities"
-button.
+1. Visit the [My Activities page on Strava.com](https://www.strava.com/athlete/training).
+2. Use the filters to select the activities you want to edit.
+3. Choose the privacy setting to apply to the selected activities.
+4. Click the "Update activities" button.
 
 A loading screen will now appear while the extension is updating the
 activities on the background. The loading screen will close once the activities

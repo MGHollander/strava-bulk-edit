@@ -28,6 +28,16 @@ const editPanelBody = document.createElement('div');
 editPanelBody.classList.add('panel-body', 'row');
 editPanel.appendChild(editPanelBody);
 
+const editPanelInfoRow = document.createElement('div');
+editPanelInfoRow.classList.add('form-group', 'col-sm-12');
+editPanelBody.appendChild(editPanelInfoRow);
+
+const editPanelInfo = document.createElement('div');
+editPanelInfo.classList.add('alert', 'alert-info');
+editPanelInfo.innerText = 'Not all filtered activities have the fields available in the update panel. The ' +
+  'plugin will just update the fields that are available for each individual activity.';
+editPanelInfoRow.appendChild(editPanelInfo);
+
 const workoutTypeRideOptions = document.getElementById('workout_type_ride');
 const editPanelFormGroupRideType = document.createElement('div');
 editPanelFormGroupRideType.classList.add('form-group', 'col-sm-6');

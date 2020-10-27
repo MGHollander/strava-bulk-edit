@@ -1,4 +1,5 @@
 'use strict';
+
 const filterPanel = document.querySelector('.search .panel');
 
 const filterPanelHeading = document.createElement('div');
@@ -27,6 +28,42 @@ const editPanelBody = document.createElement('div');
 editPanelBody.classList.add('panel-body', 'row');
 editPanel.appendChild(editPanelBody);
 
+const workoutTypeRideOptions = document.getElementById('workout_type_ride');
+const editPanelFormGroupRideType = document.createElement('div');
+editPanelFormGroupRideType.classList.add('form-group', 'col-sm-6');
+editPanelBody.appendChild(editPanelFormGroupRideType);
+
+const editPanelRideTypeLabel = document.createElement('label');
+editPanelRideTypeLabel.innerText = 'Ride type';
+editPanelFormGroupRideType.appendChild(editPanelRideTypeLabel);
+
+const editPanelRideTypeField = document.createElement('select');
+editPanelRideTypeField.id = 'strava-bulk-edit-ride-type';
+editPanelRideTypeField.classList.add('form-control');
+editPanelRideTypeField.innerHTML =  workoutTypeRideOptions.innerHTML.replace(/<option value="">All Ride Types/m, "<option value=\"10\">Ride");
+editPanelFormGroupRideType.appendChild(editPanelRideTypeField);
+
+const editPanelRideTypeDontChange = document.createElement('option');
+editPanelRideTypeDontChange.innerText = 'Don\'t change the ride type';
+editPanelRideTypeDontChange.value = '';
+editPanelRideTypeDontChange.selected = true;
+editPanelRideTypeField.insertAdjacentElement('afterbegin', editPanelRideTypeDontChange);
+
+const BikeOptions = document.getElementById('gear_bike');
+const editPanelFormGroupBike = document.createElement('div');
+editPanelFormGroupBike.classList.add('form-group', 'col-sm-6');
+editPanelBody.appendChild(editPanelFormGroupBike);
+
+const editPanelBikeLabel = document.createElement('label');
+editPanelBikeLabel.innerText = 'Bike';
+editPanelFormGroupBike.appendChild(editPanelBikeLabel);
+
+const editPanelBikeField = document.createElement('select');
+editPanelBikeField.id = 'strava-bulk-edit-ride-type';
+editPanelBikeField.classList.add('form-control');
+editPanelBikeField.innerHTML =  BikeOptions.innerHTML.replace(/All Bikes/m, "Don't change the bike");
+editPanelFormGroupBike.appendChild(editPanelBikeField);
+
 const editPanelFormGroup = document.createElement('div');
 editPanelFormGroup.classList.add('form-group', 'col-sm-6');
 editPanelBody.appendChild(editPanelFormGroup);
@@ -51,6 +88,11 @@ const editPanelVisibilityField = document.createElement('select');
 editPanelVisibilityField.id = 'strava-bulk-edit-visibility';
 editPanelVisibilityField.classList.add('form-control');
 editPanelMediaBody.appendChild(editPanelVisibilityField);
+
+const editPanelVisibilityOptionDontChange = document.createElement('option');
+editPanelVisibilityOptionDontChange.value = '';
+editPanelVisibilityOptionDontChange.innerText = 'Don\'t change the privacy';
+editPanelVisibilityField.appendChild(editPanelVisibilityOptionDontChange);
 
 const editPanelVisibilityOptionEveryone = document.createElement('option');
 editPanelVisibilityOptionEveryone.value = 'everyone';
@@ -119,7 +161,15 @@ loadingModalBody.appendChild(loadingModalText);
 editPanelSubmit.onclick = function(element) {
   const fields = {};
 
-  if (editPanelVisibilityField.value) {
+  if (editPanelRideTypeField.value !== '') {
+    fields.rideType = editPanelRideTypeField.value;
+  }
+
+  if (editPanelBikeField.value !== '') {
+    fields.bike = editPanelBikeField.value;
+  }
+
+  if (editPanelVisibilityField.value !== '') {
     fields.visibility = editPanelVisibilityField.value;
   }
 
@@ -133,9 +183,25 @@ function updateActivities(fields) {
     editButton.click();
   }
 
-  const visibility = document.querySelectorAll('.training-activity-row select[name="visibility"]');
-  for (let visibilityField of visibility) {
-    visibilityField.value = fields.visibility;
+  if (fields.rideType) {
+    const rideType = document.querySelectorAll('.training-activity-row select[name="workout_type_ride"]');
+    for (let rideTypeField of rideType) {
+      rideTypeField.value = fields.rideType;
+    }
+  }
+
+  if (fields.bike) {
+    const bike = document.querySelectorAll('.training-activity-row select[name="bike_id"]');
+    for (let bikeField of bike) {
+      bikeField.value = fields.bike;
+    }
+  }
+
+  if (fields.visibility) {
+    const visibility = document.querySelectorAll('.training-activity-row select[name="visibility"]');
+    for (let visibilityField of visibility) {
+      visibilityField.value = fields.visibility;
+    }
   }
 
   const submit = document.querySelectorAll('.training-activity-row button[type="submit"]');

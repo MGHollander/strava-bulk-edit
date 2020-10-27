@@ -64,6 +64,42 @@ editPanelBikeField.classList.add('form-control');
 editPanelBikeField.innerHTML =  BikeOptions.innerHTML.replace(/All Bikes/m, "Don't change the bike");
 editPanelFormGroupBike.appendChild(editPanelBikeField);
 
+const workoutTypeRunOptions = document.getElementById('workout_type_run');
+const editPanelFormGroupRunType = document.createElement('div');
+editPanelFormGroupRunType.classList.add('form-group', 'col-sm-6');
+editPanelBody.appendChild(editPanelFormGroupRunType);
+
+const editPanelRunTypeLabel = document.createElement('label');
+editPanelRunTypeLabel.innerText = 'Run type';
+editPanelFormGroupRunType.appendChild(editPanelRunTypeLabel);
+
+const editPanelRunTypeField = document.createElement('select');
+editPanelRunTypeField.id = 'strava-bulk-edit-ride-type';
+editPanelRunTypeField.classList.add('form-control');
+editPanelRunTypeField.innerHTML =  workoutTypeRunOptions.innerHTML.replace(/<option value="">All Run Types/m, "<option value=\"0\">Run");
+editPanelFormGroupRunType.appendChild(editPanelRunTypeField);
+
+const editPanelRunTypeDontChange = document.createElement('option');
+editPanelRunTypeDontChange.innerText = 'Don\'t change the ride type';
+editPanelRunTypeDontChange.value = '';
+editPanelRunTypeDontChange.selected = true;
+editPanelRunTypeField.insertAdjacentElement('afterbegin', editPanelRunTypeDontChange);
+
+const ShoesOptions = document.getElementById('gear_shoe');
+const editPanelFormGroupShoes = document.createElement('div');
+editPanelFormGroupShoes.classList.add('form-group', 'col-sm-6');
+editPanelBody.appendChild(editPanelFormGroupShoes);
+
+const editPanelShoesLabel = document.createElement('label');
+editPanelShoesLabel.innerText = 'Shoes';
+editPanelFormGroupShoes.appendChild(editPanelShoesLabel);
+
+const editPanelShoesField = document.createElement('select');
+editPanelShoesField.id = 'strava-bulk-edit-ride-type';
+editPanelShoesField.classList.add('form-control');
+editPanelShoesField.innerHTML =  ShoesOptions.innerHTML.replace(/All Shoes/m, "Don't change the shoes");
+editPanelFormGroupShoes.appendChild(editPanelShoesField);
+
 const editPanelFormGroup = document.createElement('div');
 editPanelFormGroup.classList.add('form-group', 'col-sm-6');
 editPanelBody.appendChild(editPanelFormGroup);
@@ -169,6 +205,14 @@ editPanelSubmit.onclick = function(element) {
     fields.bike = editPanelBikeField.value;
   }
 
+  if (editPanelRunTypeField.value !== '') {
+    fields.runType = editPanelRunTypeField.value;
+  }
+
+  if (editPanelShoesField.value !== '') {
+    fields.shoes = editPanelShoesField.value;
+  }
+
   if (editPanelVisibilityField.value !== '') {
     fields.visibility = editPanelVisibilityField.value;
   }
@@ -194,6 +238,20 @@ function updateActivities(fields) {
     const bike = document.querySelectorAll('.training-activity-row select[name="bike_id"]');
     for (let bikeField of bike) {
       bikeField.value = fields.bike;
+    }
+  }
+
+  if (fields.runType) {
+    const runType = document.querySelectorAll('.training-activity-row select[name="workout_type_run"]');
+    for (let runTypeField of runType) {
+      runTypeField.value = fields.runType;
+    }
+  }
+
+  if (fields.shoes) {
+    const shoes = document.querySelectorAll('.training-activity-row select[name="athlete_gear_id"]');
+    for (let shoesField of shoes) {
+      shoesField.value = fields.shoes;
     }
   }
 

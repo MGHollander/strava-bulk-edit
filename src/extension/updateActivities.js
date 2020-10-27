@@ -64,26 +64,29 @@ editPanelBikeField.classList.add('form-control');
 editPanelBikeField.innerHTML =  BikeOptions.innerHTML.replace(/All Bikes/m, "Don't change the bike");
 editPanelFormGroupBike.appendChild(editPanelBikeField);
 
-const workoutTypeRunOptions = document.getElementById('workout_type_run');
-const editPanelFormGroupRunType = document.createElement('div');
-editPanelFormGroupRunType.classList.add('form-group', 'col-sm-6');
-editPanelBody.appendChild(editPanelFormGroupRunType);
+// The Run type field is commented out, because updating this field does not
+// work and the issue seams to be at Strava.
 
-const editPanelRunTypeLabel = document.createElement('label');
-editPanelRunTypeLabel.innerText = 'Run type';
-editPanelFormGroupRunType.appendChild(editPanelRunTypeLabel);
-
-const editPanelRunTypeField = document.createElement('select');
-editPanelRunTypeField.id = 'strava-bulk-edit-ride-type';
-editPanelRunTypeField.classList.add('form-control');
-editPanelRunTypeField.innerHTML =  workoutTypeRunOptions.innerHTML.replace(/<option value="">All Run Types/m, "<option value=\"0\">Run");
-editPanelFormGroupRunType.appendChild(editPanelRunTypeField);
-
-const editPanelRunTypeDontChange = document.createElement('option');
-editPanelRunTypeDontChange.innerText = 'Don\'t change the ride type';
-editPanelRunTypeDontChange.value = '';
-editPanelRunTypeDontChange.selected = true;
-editPanelRunTypeField.insertAdjacentElement('afterbegin', editPanelRunTypeDontChange);
+// const workoutTypeRunOptions = document.getElementById('workout_type_run');
+// const editPanelFormGroupRunType = document.createElement('div');
+// editPanelFormGroupRunType.classList.add('form-group', 'col-sm-6');
+// editPanelBody.appendChild(editPanelFormGroupRunType);
+//
+// const editPanelRunTypeLabel = document.createElement('label');
+// editPanelRunTypeLabel.innerText = 'Run type';
+// editPanelFormGroupRunType.appendChild(editPanelRunTypeLabel);
+//
+// const editPanelRunTypeField = document.createElement('select');
+// editPanelRunTypeField.id = 'strava-bulk-edit-ride-type';
+// editPanelRunTypeField.classList.add('form-control');
+// editPanelRunTypeField.innerHTML =  workoutTypeRunOptions.innerHTML.replace(/<option value="">All Run Types/m, "<option value=\"0\">Run");
+// editPanelFormGroupRunType.appendChild(editPanelRunTypeField);
+//
+// const editPanelRunTypeDontChange = document.createElement('option');
+// editPanelRunTypeDontChange.innerText = 'Don\'t change the ride type';
+// editPanelRunTypeDontChange.value = '';
+// editPanelRunTypeDontChange.selected = true;
+// editPanelRunTypeField.insertAdjacentElement('afterbegin', editPanelRunTypeDontChange);
 
 const ShoesOptions = document.getElementById('gear_shoe');
 const editPanelFormGroupShoes = document.createElement('div');
@@ -205,9 +208,9 @@ editPanelSubmit.onclick = function(element) {
     fields.bike = editPanelBikeField.value;
   }
 
-  if (editPanelRunTypeField.value !== '') {
-    fields.runType = editPanelRunTypeField.value;
-  }
+  // if (editPanelRunTypeField.value !== '') {
+  //   fields.runType = editPanelRunTypeField.value;
+  // }
 
   if (editPanelShoesField.value !== '') {
     fields.shoes = editPanelShoesField.value;

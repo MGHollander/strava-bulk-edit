@@ -26,18 +26,18 @@ have been updated.
 ### Updating fields
 
 Not all filtered activities have the fields available in the update panel. The
-plugin will just update the fields that are available for each individual
+extension will just update the fields that are available for each individual
 activity.
 
-The gear lists might show legacy gear, because the plugin copies the gear values
-from the filter. Legacy gear will not be updated when you choose it in the
-update panel, because it is not available in the activities.
+The gear lists might show legacy gear, because the extension copies the gear
+values from the filter. Legacy gear will not be updated when you choose it in
+the update panel, because it is not available in the activities.
 
 #### Known issue
 
 It is not possible to update the Run type field at the moment. This seams to be
-an issue on the side of Strava. The code is available in the plugin, but it is
-disabled for now.
+an issue on the side of Strava. The code is available in the extension, but it
+is disabled for now.
 
 ## Roadmap
 
@@ -49,6 +49,10 @@ There are a few enhancements I like te make in the future. These are added as
 Please feel free to give feedback, share ideas or report bugs. Email me
 at [marc@mghollander.nl](mailto:marc@mghollander.nl) or [add an issue to
 the repository](https://github.com/MGHollander/strava-bulk-edit/issues).
+
+## Donate
+
+Buy me a beer -> https://paypal.me/mghollander
 
 ## Credits
 

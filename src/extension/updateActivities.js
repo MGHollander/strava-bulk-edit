@@ -1,4 +1,5 @@
 'use strict';
+
 const filterPanel = document.querySelector('.search .panel');
 
 const filterPanelHeading = document.createElement('div');
@@ -27,6 +28,91 @@ const editPanelBody = document.createElement('div');
 editPanelBody.classList.add('panel-body', 'row');
 editPanel.appendChild(editPanelBody);
 
+const editPanelInfoRow = document.createElement('div');
+editPanelInfoRow.classList.add('form-group', 'col-sm-12');
+editPanelBody.appendChild(editPanelInfoRow);
+
+const editPanelInfo = document.createElement('div');
+editPanelInfo.classList.add('alert', 'alert-info');
+editPanelInfo.innerText = 'Not all filtered activities have the fields available in the update panel. The ' +
+  'plugin will just update the fields that are available for each individual activity.';
+editPanelInfoRow.appendChild(editPanelInfo);
+
+const workoutTypeRideOptions = document.getElementById('workout_type_ride');
+const editPanelFormGroupRideType = document.createElement('div');
+editPanelFormGroupRideType.classList.add('form-group', 'col-sm-6');
+editPanelBody.appendChild(editPanelFormGroupRideType);
+
+const editPanelRideTypeLabel = document.createElement('label');
+editPanelRideTypeLabel.innerText = 'Ride type';
+editPanelFormGroupRideType.appendChild(editPanelRideTypeLabel);
+
+const editPanelRideTypeField = document.createElement('select');
+editPanelRideTypeField.id = 'strava-bulk-edit-ride-type';
+editPanelRideTypeField.classList.add('form-control');
+editPanelRideTypeField.innerHTML =  workoutTypeRideOptions.innerHTML.replace(/<option value="">All Ride Types/m, "<option value=\"10\">Ride");
+editPanelFormGroupRideType.appendChild(editPanelRideTypeField);
+
+const editPanelRideTypeDontChange = document.createElement('option');
+editPanelRideTypeDontChange.innerText = 'Don\'t change the ride type';
+editPanelRideTypeDontChange.value = '';
+editPanelRideTypeDontChange.selected = true;
+editPanelRideTypeField.insertAdjacentElement('afterbegin', editPanelRideTypeDontChange);
+
+const BikeOptions = document.getElementById('gear_bike');
+const editPanelFormGroupBike = document.createElement('div');
+editPanelFormGroupBike.classList.add('form-group', 'col-sm-6');
+editPanelBody.appendChild(editPanelFormGroupBike);
+
+const editPanelBikeLabel = document.createElement('label');
+editPanelBikeLabel.innerText = 'Bike';
+editPanelFormGroupBike.appendChild(editPanelBikeLabel);
+
+const editPanelBikeField = document.createElement('select');
+editPanelBikeField.id = 'strava-bulk-edit-ride-type';
+editPanelBikeField.classList.add('form-control');
+editPanelBikeField.innerHTML =  BikeOptions.innerHTML.replace(/All Bikes/m, "Don't change the bike");
+editPanelFormGroupBike.appendChild(editPanelBikeField);
+
+// The Run type field is commented out, because updating this field does not
+// work and the issue seams to be at Strava.
+
+// const workoutTypeRunOptions = document.getElementById('workout_type_run');
+// const editPanelFormGroupRunType = document.createElement('div');
+// editPanelFormGroupRunType.classList.add('form-group', 'col-sm-6');
+// editPanelBody.appendChild(editPanelFormGroupRunType);
+//
+// const editPanelRunTypeLabel = document.createElement('label');
+// editPanelRunTypeLabel.innerText = 'Run type';
+// editPanelFormGroupRunType.appendChild(editPanelRunTypeLabel);
+//
+// const editPanelRunTypeField = document.createElement('select');
+// editPanelRunTypeField.id = 'strava-bulk-edit-ride-type';
+// editPanelRunTypeField.classList.add('form-control');
+// editPanelRunTypeField.innerHTML =  workoutTypeRunOptions.innerHTML.replace(/<option value="">All Run Types/m, "<option value=\"0\">Run");
+// editPanelFormGroupRunType.appendChild(editPanelRunTypeField);
+//
+// const editPanelRunTypeDontChange = document.createElement('option');
+// editPanelRunTypeDontChange.innerText = 'Don\'t change the ride type';
+// editPanelRunTypeDontChange.value = '';
+// editPanelRunTypeDontChange.selected = true;
+// editPanelRunTypeField.insertAdjacentElement('afterbegin', editPanelRunTypeDontChange);
+
+const ShoesOptions = document.getElementById('gear_shoe');
+const editPanelFormGroupShoes = document.createElement('div');
+editPanelFormGroupShoes.classList.add('form-group', 'col-sm-6');
+editPanelBody.appendChild(editPanelFormGroupShoes);
+
+const editPanelShoesLabel = document.createElement('label');
+editPanelShoesLabel.innerText = 'Shoes';
+editPanelFormGroupShoes.appendChild(editPanelShoesLabel);
+
+const editPanelShoesField = document.createElement('select');
+editPanelShoesField.id = 'strava-bulk-edit-ride-type';
+editPanelShoesField.classList.add('form-control');
+editPanelShoesField.innerHTML =  ShoesOptions.innerHTML.replace(/All Shoes/m, "Don't change the shoes");
+editPanelFormGroupShoes.appendChild(editPanelShoesField);
+
 const editPanelFormGroup = document.createElement('div');
 editPanelFormGroup.classList.add('form-group', 'col-sm-6');
 editPanelBody.appendChild(editPanelFormGroup);
@@ -51,6 +137,11 @@ const editPanelVisibilityField = document.createElement('select');
 editPanelVisibilityField.id = 'strava-bulk-edit-visibility';
 editPanelVisibilityField.classList.add('form-control');
 editPanelMediaBody.appendChild(editPanelVisibilityField);
+
+const editPanelVisibilityOptionDontChange = document.createElement('option');
+editPanelVisibilityOptionDontChange.value = '';
+editPanelVisibilityOptionDontChange.innerText = 'Don\'t change the privacy';
+editPanelVisibilityField.appendChild(editPanelVisibilityOptionDontChange);
 
 const editPanelVisibilityOptionEveryone = document.createElement('option');
 editPanelVisibilityOptionEveryone.value = 'everyone';
@@ -119,7 +210,23 @@ loadingModalBody.appendChild(loadingModalText);
 editPanelSubmit.onclick = function(element) {
   const fields = {};
 
-  if (editPanelVisibilityField.value) {
+  if (editPanelRideTypeField.value !== '') {
+    fields.rideType = editPanelRideTypeField.value;
+  }
+
+  if (editPanelBikeField.value !== '') {
+    fields.bike = editPanelBikeField.value;
+  }
+
+  // if (editPanelRunTypeField.value !== '') {
+  //   fields.runType = editPanelRunTypeField.value;
+  // }
+
+  if (editPanelShoesField.value !== '') {
+    fields.shoes = editPanelShoesField.value;
+  }
+
+  if (editPanelVisibilityField.value !== '') {
     fields.visibility = editPanelVisibilityField.value;
   }
 
@@ -133,9 +240,39 @@ function updateActivities(fields) {
     editButton.click();
   }
 
-  const visibility = document.querySelectorAll('.training-activity-row select[name="visibility"]');
-  for (let visibilityField of visibility) {
-    visibilityField.value = fields.visibility;
+  if (fields.rideType) {
+    const rideType = document.querySelectorAll('.training-activity-row select[name="workout_type_ride"]');
+    for (let rideTypeField of rideType) {
+      rideTypeField.value = fields.rideType;
+    }
+  }
+
+  if (fields.bike) {
+    const bike = document.querySelectorAll('.training-activity-row select[name="bike_id"]');
+    for (let bikeField of bike) {
+      bikeField.value = fields.bike;
+    }
+  }
+
+  if (fields.runType) {
+    const runType = document.querySelectorAll('.training-activity-row select[name="workout_type_run"]');
+    for (let runTypeField of runType) {
+      runTypeField.value = fields.runType;
+    }
+  }
+
+  if (fields.shoes) {
+    const shoes = document.querySelectorAll('.training-activity-row select[name="athlete_gear_id"]');
+    for (let shoesField of shoes) {
+      shoesField.value = fields.shoes;
+    }
+  }
+
+  if (fields.visibility) {
+    const visibility = document.querySelectorAll('.training-activity-row select[name="visibility"]');
+    for (let visibilityField of visibility) {
+      visibilityField.value = fields.visibility;
+    }
   }
 
   const submit = document.querySelectorAll('.training-activity-row button[type="submit"]');

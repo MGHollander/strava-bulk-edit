@@ -52,8 +52,7 @@ or [add an issue](https://github.com/MGHollander/strava-bulk-edit/issues).
 
 ## Donate
 
-
-I work on this widget in my free time, but you can support me by making 
+I work on this extension in my free time, but you can support me by making 
 a donation (or buy me a beer) via https://paypal.me/mghollander.
 
 ## Credits

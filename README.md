@@ -47,12 +47,13 @@ There are a few enhancements I like te make in the future. These are added as
 ## Feedback
 
 Please feel free to give feedback, share ideas or report bugs. Email me
-at [marc@mghollander.nl](mailto:marc@mghollander.nl) or [add an issue to
-the repository](https://github.com/MGHollander/strava-bulk-edit/issues).
+at marc [at] mghollander [dot] nl
+or [add an issue](https://github.com/MGHollander/strava-bulk-edit/issues).
 
 ## Donate
 
-Buy me a beer -> https://paypal.me/mghollander
+I work on this extension in my free time, but you can support me by making 
+a donation (or buy me a beer) via https://paypal.me/mghollander.
 
 ## Credits
 

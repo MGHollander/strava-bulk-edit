@@ -1,3 +1,9 @@
+# Removed from the Chrome Webstore
+
+Due to a lack of motivation to continue development I've chosen to remove this extionsion from the website. Feel free to fork the repo and re-publish the extension.
+
+----
+
 # Strava Bulk Edit
 
 A Chrome extension to edit multiple Strava activities at once.
@@ -10,7 +16,7 @@ update then one by one.
 
 ## Official Releases
 
-- [Google Chrome Extension](https://chrome.google.com/webstore/detail/strava-bulk-edit/mkbkebdegldokaipfgficlleheeejfjg)
+- ~[Google Chrome Extension](https://chrome.google.com/webstore/detail/strava-bulk-edit/mkbkebdegldokaipfgficlleheeejfjg)~
 
 ## Usage
 
